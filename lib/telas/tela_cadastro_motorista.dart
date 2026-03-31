@@ -43,7 +43,7 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
 
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Categoria CNH (A, B, C...)',
+                  labelText: 'Categoria CNH (B, C...)',
                   border: OutlineInputBorder(),
                 ),
                 onSaved: (v) => categoria = v!,
