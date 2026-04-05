@@ -4,6 +4,8 @@ import 'telas/tela_cadastro_veiculo.dart';
 import 'telas/tela_lista_veiculos.dart';
 import 'telas/tela_cadastro_motorista.dart';
 import 'telas/tela_cadastro_entrega.dart';
+import 'telas/tela_lista_motorista.dart';
+import 'telas/tela_iniciar_entrega.dart';
 
 void main() {
   runApp(AppFrota());
@@ -20,7 +22,9 @@ class AppFrota extends StatelessWidget {
         '/cadastro-veiculo': (context) => TelaCadastroVeiculo(),
         '/lista-veiculos': (context) => TelaListaVeiculos(),
         '/cadastro-motorista': (context) => TelaCadastroMotorista(),
+        '/lista-motoristas': (context) => TelaListaMotorista(),
         '/cadastro-entrega': (context) => TelaCadastroEntrega(),
+        '/iniciar-entrega': (context) => TelaIniciarEntrega(),
       },
     );
   }

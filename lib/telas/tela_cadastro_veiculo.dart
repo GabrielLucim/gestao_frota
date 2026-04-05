@@ -13,12 +13,22 @@ class _TelaCadastroVeiculoState extends State<TelaCadastroVeiculo> {
   String modelo = '';
   String placa = '';
   String fabricante = '';
+  int ano = 0;
+  double kmRodados = 0;
 
-  void salvar() {
+void salvar() {
+    if (!formKey.currentState!.validate()) return;
+
     formKey.currentState!.save();
 
     Dados.veiculos.add(
-      Veiculo(modelo: modelo, placa: placa, fabricante: fabricante),
+      Veiculo(
+        placa: placa,
+        modelo: modelo,
+        fabricante: fabricante,
+        ano: ano,
+        kmRodados: kmRodados,
+      ),
     );
 
     Navigator.pop(context);
@@ -39,6 +49,8 @@ class _TelaCadastroVeiculoState extends State<TelaCadastroVeiculo> {
                   labelText: 'Modelo',
                   border: OutlineInputBorder(),
                 ),
+                validator: (v) =>
+                    v == null || v.isEmpty ? 'Informe o modelo' : null,
                 onSaved: (v) => modelo = v!,
               ),
 
@@ -49,6 +61,8 @@ class _TelaCadastroVeiculoState extends State<TelaCadastroVeiculo> {
                   labelText: 'Placa',
                   border: OutlineInputBorder(),
                 ),
+                validator: (v) =>
+                    v == null || v.isEmpty ? 'Informe a placa' : null,
                 onSaved: (v) => placa = v!,
               ),
 
@@ -59,10 +73,50 @@ class _TelaCadastroVeiculoState extends State<TelaCadastroVeiculo> {
                   labelText: 'Fabricante',
                   border: OutlineInputBorder(),
                 ),
-                onSaved: (v) => fabricante = v ?? '',
+                validator: (v) =>
+                    v == null || v.isEmpty ? 'Informe o fabricante' : null,
+                onSaved: (v) => fabricante = v!,
               ),
 
               SizedBox(height: 20),
+
+              SizedBox(height: 15),
+
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Ano',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+                validator: (v) {
+                  if (v == null || v.isEmpty) return 'Informe o ano';
+                  final anoNum = int.tryParse(v);
+                  if (anoNum == null || anoNum < 1900) {
+                    return 'Ano inválido';
+                  }
+                  return null;
+                },
+                onSaved: (v) => ano = int.parse(v!),
+              ),
+
+              SizedBox(height: 15),
+
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'KM Rodados',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+                validator: (v) {
+                  if (v == null || v.isEmpty) return 'Informe a quilometragem';
+                  final km = double.tryParse(v);
+                  if (km == null || km < 0) {
+                    return 'Valor inválido';
+                  }
+                  return null;
+                },
+                onSaved: (v) => kmRodados = double.parse(v!),
+              ),
 
               ElevatedButton(onPressed: salvar, child: Text('Salvar')),
             ],

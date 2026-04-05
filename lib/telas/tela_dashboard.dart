@@ -52,8 +52,22 @@ class TelaDashboard extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () =>
+                    Navigator.pushNamed(context, '/lista-motoristas'),
+                child: Text('Listar Motoristas'),
+              ),
+              SizedBox(height: 12),
+
+              ElevatedButton(
+                onPressed: () =>
                     Navigator.pushNamed(context, '/cadastro-entrega'),
                 child: Text('Cadastrar Entrega'),
+              ),
+              SizedBox(height: 12),
+
+              ElevatedButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, '/iniciar-entrega'),
+                child: Text('Iniciar Entrega'),
               ),
             ],
           ),

@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:gestao_frota/dados.dart';
-import 'package:gestao_frota/modelos/veiculo.dart';
+import 'package:gestao_frota/modelos/motorista.dart';
 
-class TelaListaVeiculos extends StatelessWidget {
+class TelaListaMotorista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Veículos')),
+      appBar: AppBar(title: Text('Motoristas')),
 
-      body: Dados.veiculos.isEmpty
+      body: Dados.motoristas.isEmpty
           ? Center(
               child: Text(
-                'Nenhum veículo cadastrado',
+                'Nenhum motorista cadastrado',
                 style: TextStyle(fontSize: 18),
               ),
             )
           : ListView(
               padding: EdgeInsets.all(16),
-              children: Dados.veiculos.map((Veiculo v) {
+              children: Dados.motoristas.map((Motorista m) {
                 return Card(
                   child: ListTile(
-                    title: Text(v.modelo),
-                    subtitle: Text(
-                      'Placa: ${v.placa}\nFabricante: ${v.fabricante}\nAno: ${v.ano}\nKM: ${v.kmRodados}',
-                    ),
+                    title: Text(m.nome),
+                    subtitle: Text('CNH: ${m.categoria_cnh}\nCPF: ${m.cpf}\nIdade: ${m.idade}',
+                    )
                   ),
                 );
               }).toList(),
