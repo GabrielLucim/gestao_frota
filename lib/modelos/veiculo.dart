@@ -2,14 +2,14 @@ class Veiculo {
   String placa;
   String modelo;
   String fabricante;
-  int anoTESTE;
+  int ano;
   double kmRodados;
 
   Veiculo({
     required this.placa,
     required this.modelo,
     required this.fabricante,
-    required this.anoTESTE,
+    required this.ano,
     required this.kmRodados,
   });
 }
