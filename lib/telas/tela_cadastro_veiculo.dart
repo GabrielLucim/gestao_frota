@@ -16,7 +16,7 @@ class _TelaCadastroVeiculoState extends State<TelaCadastroVeiculo> {
   int ano = 0;
   double kmRodados = 0;
 
-void salvar() {
+  void salvar() {
     if (!formKey.currentState!.validate()) return;
 
     formKey.currentState!.save();
@@ -77,8 +77,6 @@ void salvar() {
                     v == null || v.isEmpty ? 'Informe o fabricante' : null,
                 onSaved: (v) => fabricante = v!,
               ),
-
-              SizedBox(height: 20),
 
               SizedBox(height: 15),
 

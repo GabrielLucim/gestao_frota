@@ -74,8 +74,6 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
                 onSaved: (v) => categoria = v!.toUpperCase(),
               ),
 
-              SizedBox(height: 20),
-
               SizedBox(height: 15),
 
               TextFormField(
@@ -83,6 +81,7 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
                   labelText: 'CPF',
                   border: OutlineInputBorder(),
                 ),
+                keyboardType: TextInputType.number,
                 validator: (v) {
                   if (v == null || v.isEmpty) return 'Informe o CPF';
                   if (v.length < 11) return 'CPF inválido';
