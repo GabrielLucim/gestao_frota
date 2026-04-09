@@ -21,8 +21,12 @@ class TelaListaMotorista extends StatelessWidget {
                 return Card(
                   child: ListTile(
                     title: Text(m.nome),
-                    subtitle: Text('CNH: ${m.categoria_cnh}\nCPF: ${m.cpf}\nIdade: ${m.idade}',
-                    )
+                    subtitle: Text(
+                      'CNH: ${m.categoria_cnh}\n'
+                      'CPF: ${m.cpf}\n'
+                      'Idade: ${m.idade}\n'
+                      'Nascimento: ${m.dataNascimento.day}/${m.dataNascimento.month}/${m.dataNascimento.year}',
+                    ),
                   ),
                 );
               }).toList(),

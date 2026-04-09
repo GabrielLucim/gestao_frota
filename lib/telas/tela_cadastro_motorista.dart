@@ -13,7 +13,7 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
   String nome = '';
   String categoria = '';
   String cpf = '';
-  int idade = 0;
+  DateTime? dataNascimento;
 
   void salvar() {
     if (!formKey.currentState!.validate()) return;
@@ -21,7 +21,12 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
     formKey.currentState!.save();
 
     Dados.motoristas.add(
-      Motorista(nome: nome, categoria_cnh: categoria, cpf: cpf, idade: idade),
+      Motorista(
+        nome: nome,
+        categoria_cnh: categoria,
+        cpf: cpf,
+        dataNascimento: dataNascimento!,
+      ),
     );
 
     Navigator.pop(context);
@@ -94,19 +99,27 @@ class _TelaCadastroMotoristaState extends State<TelaCadastroMotorista> {
 
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Idade',
+                  labelText: 'Data de nascimento (DD/MM/AAAA)',
                   border: OutlineInputBorder(),
                 ),
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.datetime,
                 validator: (v) {
-                  if (v == null || v.isEmpty) return 'Informe a idade';
-                  final idadeNum = int.tryParse(v);
-                  if (idadeNum == null || idadeNum < 18) {
-                    return 'Idade inválida (mínimo 18)';
+                  if (v == null || v.isEmpty) return 'Informe a data';
+
+                  final partes = v.split('/');
+                  if (partes.length != 3) return 'Formato inválido';
+
+                  final dia = int.tryParse(partes[0]);
+                  final mes = int.tryParse(partes[1]);
+                  final ano = int.tryParse(partes[2]);
+
+                  if (dia == null || mes == null || ano == null) {
+                    return 'Data inválida';
                   }
+
+                  dataNascimento = DateTime(ano, mes, dia);
                   return null;
                 },
-                onSaved: (v) => idade = int.parse(v!),
               ),
 
               ElevatedButton(onPressed: salvar, child: Text('Salvar')),

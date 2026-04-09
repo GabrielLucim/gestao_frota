@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestao_frota/telas/tela_relatorio_entregas.dart';
 
 class TelaDashboard extends StatelessWidget {
   @override
@@ -68,6 +69,13 @@ class TelaDashboard extends StatelessWidget {
                 onPressed: () =>
                     Navigator.pushNamed(context, '/iniciar-entrega'),
                 child: Text('Iniciar Entrega'),
+              ),
+              SizedBox(height: 12),
+              
+              ElevatedButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, '/relatorio-entregas'),
+                child: Text('Relatório de Entregas'),
               ),
             ],
           ),

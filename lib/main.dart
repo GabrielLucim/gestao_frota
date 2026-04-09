@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestao_frota/telas/tela_relatorio_entregas.dart';
 import 'telas/tela_dashboard.dart';
 import 'telas/tela_cadastro_veiculo.dart';
 import 'telas/tela_lista_veiculos.dart';
@@ -25,6 +26,7 @@ class AppFrota extends StatelessWidget {
         '/lista-motoristas': (context) => TelaListaMotorista(),
         '/cadastro-entrega': (context) => TelaCadastroEntrega(),
         '/iniciar-entrega': (context) => TelaIniciarEntrega(),
+        '/relatorio-entregas': (context) => TelaRelatorioEntregas(),
       },
     );
   }
