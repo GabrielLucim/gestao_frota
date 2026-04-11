@@ -25,10 +25,23 @@ class TelaRelatorioEntregas extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('Relatório de Entregas')),
-
-      body: Padding(
-        padding: EdgeInsets.all(16),
+        body: Center(
+        child: Container(
+          width: 350,
+          padding: EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 12,
+                color: Colors.black26,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Card(
               child: ListTile(
@@ -67,6 +80,6 @@ class TelaRelatorioEntregas extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

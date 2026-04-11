@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestao_frota/telas/tela_relatorio_entregas.dart';
+import 'telas/tela_busca_geral.dart';
+import 'telas/tela_login.dart';
+import 'telas/tela_relatorio_entregas.dart';
 import 'telas/tela_dashboard.dart';
 import 'telas/tela_cadastro_veiculo.dart';
 import 'telas/tela_lista_veiculos.dart';
@@ -19,7 +21,9 @@ class AppFrota extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => TelaDashboard(),
+        '/': (context) => TelaLogin(),
+        '/dashboard': (context) => TelaDashboard(),
+        '/busca-geral': (context) => TelaBuscaGeral(),
         '/cadastro-veiculo': (context) => TelaCadastroVeiculo(),
         '/lista-veiculos': (context) => TelaListaVeiculos(),
         '/cadastro-motorista': (context) => TelaCadastroMotorista(),
